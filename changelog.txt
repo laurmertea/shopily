@@ -1,0 +1,17 @@
+Initial version
+---------------
+
+Welcome to your RoomRaccoon tech assessment!
+
+Today you will be creating a little shopping list tool. Even though it's a simple exercise, the deliverable tells us a lot about your technical abilities. 
+Please make sure the shopping list can do the following:
+
+Add items
+Delete items
+Edit items
+Mark items as checked
+
+Things to note:
+You are free to decide how it exactly looks like and works, as long as you will use at least HTML, CSS, Vanilla PHP, MySQL & JS.
+You can allowed to pull in third-party libraries via composer if needed as well as npm (or a similar JS dependency manager) if needed
+When sending the final product please send us the URL where deployed and the codebase of the shopping list when you're done.
