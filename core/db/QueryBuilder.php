@@ -14,6 +14,7 @@ use PDOException;
 class QueryBuilder
 {
     protected $db;
+    protected $pdo;
 
     public function __construct(PDO $db)
     {
@@ -63,6 +64,25 @@ class QueryBuilder
             $table,
             implode(', ', array_keys($params)),
             ':' . implode(', :', array_keys($params))
+        );
+
+        try {
+            $statement = $this->db->prepare($sql);
+            $statement->execute($params);
+        } catch (Exception $e) {
+            die("Whoops, something went wrong! {$e->getMessage()}");
+        }
+
+        return true;
+    }
+
+    public function updateById($table, $params, $id)
+    {
+        $sql = sprintf(
+            'UPDATE %s SET %s WHERE id = %s',
+            $table,
+            implode(", ", array_map(function($value) { return "$value=:$value"; }, array_keys($params))),
+            $id
         );
 
         try {

@@ -8,7 +8,7 @@
     </footer>
 
     <script>
-        function hide() {
+        function oldhide() {
             const listsEl = document.querySelector('#content');
             const listEl = document.querySelector('#current-list');
             const itemsEl = document.querySelector('#current-items');
@@ -18,7 +18,7 @@
             listsEl.classList.remove('flex-grow-1');
             listEl.style.display='none';
         }
-        function show(list) {
+        function oldshow(list) {
             const listsEl = document.querySelector('#content');
             const listEl = document.querySelector('#current-list');
             const itemsEl = document.querySelector('#current-items');

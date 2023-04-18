@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Core\App;
 
-class PagesController
+class PagesController extends Controller
 {
     public function title($name = null)
     {
@@ -28,9 +28,9 @@ class PagesController
             $list->items = (App::get('db'))->selectWhere('items', ['list_id' => $list->id], 'App\\Item');
         }
 
-        App::bind('lists', $lists);
+        $latestList = self::latest($lists);
         
-        return view('home', compact('title', 'lists'));
+        return view('home', compact('title', 'lists', 'latestList'));
     }
 
     public function about()

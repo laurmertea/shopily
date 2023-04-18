@@ -3,7 +3,7 @@
         <div style="display: grid;">
             <h1>About Shopily</h1>
 
-            <h3>Welcome to your RoomRaccoon tech assessment!</h3>
+            <h3>Welcome to your tech assessment!</h3>
             
             <p>
                 Today you will be creating a little shopping list tool. Even though it's a simple exercise, the deliverable tells us a lot about your technical abilities. 
@@ -20,8 +20,7 @@
             <h4>Things to note:</h4>
             <ul>
                 <li>You are free to decide how it exactly looks like and works, as long as you will use at least HTML, CSS, Vanilla PHP, MySQL & JS.</li>
-                <li>You can allowed to pull in third-party libraries via composer if needed as well as npm (or a similar JS dependency manager) if needed.</li>
-                <li>When sending the final product please send us the URL where deployed and the codebase of the shopping list when you're done.</li>
+                <li>You are allowed to pull in third-party libraries via composer, if needed, as well as npm (or a similar JS dependency manager), if needed.</li>
             </ul>
         </div>
     </div>

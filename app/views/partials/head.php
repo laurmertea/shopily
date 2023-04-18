@@ -8,3 +8,7 @@
 </head>
 <body>
     <?php if (isset($loggedIn) || isLoggedIn()) partial('nav');?>
+
+    <div class="flex-center" style="min-height: 2em;">
+        <?php if (hasMessage()) showHTMLMessage() ;?>
+    </div>

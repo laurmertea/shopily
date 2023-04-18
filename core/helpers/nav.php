@@ -9,7 +9,6 @@ function view($name, $data = null)
 
     if ($data) {
         if (is_array($data)) extract($data);
-        if ($data instanceof ItemsList) $list = $data;
     }
 
     return require "app/views/{$name}.view.php";
