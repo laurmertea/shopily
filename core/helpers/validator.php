@@ -28,7 +28,7 @@ function onlyAlphanumeric($string)
 
 function minLength($string, $minLength = null)
 {
-    $minLength ??= (App::get('appConfig'))['minLength'];
+    $minLength = $minLength ?? (App::get('appConfig'))['minLength'];
 
     return (strlen($string) < $minLength) ? false : true;
 }

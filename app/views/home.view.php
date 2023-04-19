@@ -3,6 +3,7 @@
  partial('head', compact('title')); ?>
     <div class="content_container flex-column-center" id="content">
         <?php if (count($lists) > 0): ?>
+            
             <?php view('lists/latest', $latestList); ?>
 
             <div style="margin-top: 2em;">

@@ -21,9 +21,13 @@ class Controller
         if (! in_array($direction, $allowed)) return $data;
 
         if ($direction === 'DESC') {
-            usort($data, fn($a, $b) => $b->$property <=> $a->$property);
+            usort($data, function ($a, $b) use ($property) {
+                return $b->$property <=> $a->$property;
+            });
         } else {
-            usort($data, fn($a, $b) => $a->$property <=> $b->$property);
+            usort($data, function ($a, $b) use ($property) {
+                return $a->$property <=> $b->$property;
+            });
         }
 
         return $data;

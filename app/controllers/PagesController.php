@@ -29,7 +29,7 @@ class PagesController extends Controller
         }
 
         $latestList = self::latest($lists);
-        
+
         return view('home', compact('title', 'lists', 'latestList'));
     }
 

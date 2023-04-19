@@ -1,4 +1,5 @@
-<div class="flex-center center">
+<div class="flex-column-center">
+    <h2>Here's your latest list</h2>
     <div id="latest-list" class="white-bg rounded-10 border-2 shadowed list">
         <div class="left">
             <div class="tooltip">
@@ -18,7 +19,7 @@
             </div>
 
             <div id="items">
-                <?php foreach($data->items as $item): ?>
+                <?php foreach ($data->items as $item) : ?>
                     <?php view('items/index', $item); ?>
                 <?php endforeach; ?>
                 

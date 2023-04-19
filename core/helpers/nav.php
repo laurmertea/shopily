@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\PagesController;
 use App\Core\App;
 use App\ItemsList;
 
@@ -9,6 +10,7 @@ function view($name, $data = null)
 
     if ($data) {
         if (is_array($data)) extract($data);
+        if (!isset($title)) $title = (new PagesController)->title(getLast());
     }
 
     return require "app/views/{$name}.view.php";
@@ -41,6 +43,12 @@ function showHTMLMessage()
 function getErrors($errors)
 {
     return compact('errors');
+}
+
+function getLast()
+{
+    $path = explode("/", $_SERVER["PHP_SELF"]);
+    return end($path);
 }
 
 function defaultTitle()

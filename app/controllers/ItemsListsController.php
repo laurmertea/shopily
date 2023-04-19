@@ -10,7 +10,15 @@ class ItemsListsController
     {
         $lists = (App::get('db'))->selectWhere('lists', ['user_id' => userId()], 'App\\ItemsList');
 
-        dd($lists);
+        // dd($lists);
+        // $title = (new PagesController)->title("Lists");
+
+        return view('lists/index', compact('lists'));
+    }
+
+    public function show(string $id)
+    {
+        dd($id);
     }
 
     public function store(array $data)
@@ -28,6 +36,5 @@ class ItemsListsController
         $data = [];
 
         dd($data);
-
     }
 }

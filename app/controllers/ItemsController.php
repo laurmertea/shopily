@@ -129,7 +129,6 @@ class ItemsController
             'id' => intval($_POST['id'])
         ]);
 
-        
         $session->message = "Item removed successfully.";
         App::bind('session', $session);
 

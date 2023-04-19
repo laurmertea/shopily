@@ -270,6 +270,9 @@ footer {
     text-align: center;
     vertical-align: middle;
 }
+.bordered-item:not(:last-child) {
+    border-bottom: 1px solid black;
+}
 .nb_list {
     list-style-type: none;
 }

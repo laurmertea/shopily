@@ -13,6 +13,7 @@ $router->get('logout', 'UsersController@logout');
 $router->post('register', 'UsersController@register');
 
 $router->get('lists', 'ItemsListsController@index');
+$router->get('lists/:id', 'ItemsListsController@show');
 
 $router->post('addItem', 'ItemsController@add');
 $router->post('updateItem', 'ItemsController@update');
