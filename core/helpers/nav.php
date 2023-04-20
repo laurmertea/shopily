@@ -10,8 +10,9 @@ function view($name, $data = null)
 
     if ($data) {
         if (is_array($data)) extract($data);
-        if (!isset($title)) $title = (new PagesController)->title(getLast());
     }
+
+    if (!isset($title)) $title = (new PagesController)->title(getLast());
 
     return require "app/views/{$name}.view.php";
 }

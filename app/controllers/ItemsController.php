@@ -30,7 +30,12 @@ class ItemsController
         App::bind('session', $session);
 
         redirect();
-    }    
+    }
+
+    public function create($id)
+    {
+        return view('items/create', compact('id'));
+    }
 
     public function add()
     {
@@ -39,10 +44,21 @@ class ItemsController
             return view("index", getErrors($this->errors));
         }
 
+        $session = getSession();
         $data = [];
         $data['title'] = sanitize($_POST['title']);
         $data['description'] = sanitize($_POST['description']);
         $data['list_id'] = sanitize($_POST['list_id']);
+
+        if (!(App::get('db'))->selectWhere('lists', ['id' => $_POST['list_id']], 'App\\ItemsList')) {
+            $session->message = "Doesn't exist.";
+            return (new PagesController)->home();
+        }
+
+        if ((App::get('db'))->selectWhere('lists', ['id' => $_POST['list_id']], 'App\\ItemsList')[0]->user_id !== userId()) {
+            $session->message = "Not allowed.";
+            return (new PagesController)->home();
+        }
 
         if ($this->errors) return view("index", getErrors($this->errors));
 
@@ -67,7 +83,7 @@ class ItemsController
 
         $currentListId = Item::find($_POST['id'])[0]->list_id;
 
-        if((App::get('db'))->selectWhere('lists', ['id' => $currentListId], 'App\\ItemsList')[0]->user_id !== userId()) {
+        if ((App::get('db'))->selectWhere('lists', ['id' => $currentListId], 'App\\ItemsList')[0]->user_id !== userId()) {
             $session->message = "Not allowed.";
             return (new PagesController)->home();
         }
@@ -91,8 +107,8 @@ class ItemsController
         $session->message = "Item updated successfully.";
         App::bind('session', $session);
 
-        if((ItemsList::find($currentListId))[0]->completed != (self::updateStatus($currentListId))) {
-            dd("Needs update!");
+        if ((ItemsList::find($currentListId))[0]->completed != (self::updateStatus($currentListId))) {
+            // TODO: Needs update for count
             //new ItemsListsController->update();
         }
 

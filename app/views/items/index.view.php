@@ -1,4 +1,4 @@
-<div class="flex-column-center" style="border-bottom: 1px solid black;">
+<div class="flex-column-center" style="border-bottom: 1px solid #c3c3c3;">
     <li 
         style="display: flex; justify-content: space-between; min-width: 400px; min-height: 2em; margin: 0.75em 0.5em;" id="<?= $data->id;?>" 
         onmouseover="show(this.id)" onmouseleave="hide(this.id)">

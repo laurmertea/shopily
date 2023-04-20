@@ -25,7 +25,7 @@
                 
                 <div class="flex-column-center">
                     <div style="display: flex; justify-content: space-between; min-width: 400px; min-height: 2em; margin: 0.75em 0.5em;">
-                        <a class="action-link" href="/addItem">Add a new item</a>
+                        <a class="action-link" href="<?="/createItem/{$data->id}";?>">Add a new item</a>
                     </div>
                 </div>
             </div>

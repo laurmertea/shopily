@@ -11,7 +11,7 @@ class Router
         'POST' => []
     ];
 
-    protected $routeId;
+    protected $routeId = null;
 
     public static function load($file)
     {
@@ -36,6 +36,8 @@ class Router
 
     public function direct($uri, $requestType)
     {
+        $this->resetRouteId();
+
         if (array_key_exists($uri, $this->routes[$requestType])) {
             return $this->call(
                 ...explode("@", $this->routes[$requestType][$uri])
@@ -47,7 +49,9 @@ class Router
             preg_match('~' . $pattern . '~', $uri, $matches);
             if (isset($matches[1])) {
                 $this->setRouteId($matches[1]);
-                return $route;
+                return $this->call(
+                    ...explode("@", $this->routes[$requestType][$route])
+                );
             }
         }
 
@@ -59,15 +63,17 @@ class Router
         throw new Exception("No route found for {$uri}");
     }
 
-    protected function call($controller, $action)
+    protected function call($controller, $action, $id = null)
     {
-        $controller = "App\\Controllers\\{$controller}";
-        $controller = new $controller;
+        $controllerName = "App\\Controllers\\{$controller}";
+        $controller = new $controllerName;
 
         if (! method_exists($controller, $action)) 
-            throw new Exception("Controller {$controller} does not respond to the {$action} action!");
+            throw new Exception("Controller {$controllerName} does not respond to the {$action} action!");
 
-        return $controller->$action();
+        return ($this->routeId)
+            ? $controller->$action($this->routeId)
+            : $controller->$action();
     }
 
     public function getRouteId()
@@ -78,5 +84,10 @@ class Router
     protected function setRouteId($routeId)
     {
         $this->routeId = $routeId;
+    }
+
+    protected function resetRouteId()
+    {
+        $this->routeId = null;
     }
 }
