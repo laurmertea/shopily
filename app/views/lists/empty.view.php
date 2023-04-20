@@ -5,7 +5,7 @@
         <h3 id="title">There are currently no lists ...</h3>
         <hr class="mb-20"/>
         <span>
-            Add some <a href="#">items</a> to a list or start a new <a href="#">one</a>
+            Start a new <a href="/lists/create">list</a>
         </span>
     </div>
 </div>
